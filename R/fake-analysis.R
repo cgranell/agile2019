@@ -12,3 +12,22 @@ data_aq <- here("R", "data")
 
 files = list.files(data_aq, pattern = "*.csv", full.names = TRUE)
 r = lapply(files[-1], function(f) read.csv(f))
+
+Sys.setenv(TZ = "UTC") # make sure times are not interpreted as DST
+r = lapply(r, function(f) {
+  f$t = as.POSIXct(f$DatetimeBegin) 
+  f[order(f$t), ] 
+  }
+) 
+
+
+r = r[sapply(r, nrow) > 1000]
+names(r) =  sapply(r, function(f) unique(f$AirQualityStationEoICode))
+length(r) == length(unique(names(r)))
+
+
+library(xts)
+r = lapply(r, function(f) xts(f$Concentration, f$t))
+aq = do.call(cbind, r)
+
+
