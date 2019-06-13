@@ -59,7 +59,9 @@ cy.sf <- st_transform(st_as_sf(cy), crs)
 ggplot() + geom_sf(data=cy.sf) + geom_sf(data = no2.sf, mapping = aes(col = NO2)) + 
   geom_sf_text(data = no2.sf, aes(label = station_local_code), colour = "black", size=2, nudge_y = -1)
 
-## some text plus R expression
+## It works fine until here. 
+## We can add some r expression along with text to show details of the weather stations in tabular form
+
 
 
 library(gstat)
