@@ -41,15 +41,19 @@ a2 <- read.csv(here("data", "AirBase_v8_stations.csv"), sep = "\t", stringsAsFac
 
 # Spatial transformation  
 library(sf)
-library(stars)
 a2.sf <- st_as_sf(a2, coords = c("station_longitude_deg", "station_latitude_deg"), crs = 4326)
-
 sel <-colnames(aqsel) %in% a2$station_european_code
 aqsel <- aqsel[, sel]
 
 tb <- tibble(NO2 = apply(aqsel, 2, mean, na.rm = TRUE), station_european_code = colnames(aqsel))
 crs <- 3857 # Mercator
 no2.sf <- right_join(a2.sf, tb) %>% st_transform(crs)  
+
+
+#' Save intermediate results as input for "analysis_simple.R"
+# filename = "no2_cy.geojson"
+# write_sf(obj = no2.sf, here("data", filename))
+
 
 # load Cyprus boundaries
 library(cshapes)
