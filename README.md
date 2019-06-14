@@ -41,6 +41,16 @@ The author perspective focuses on the reproducibility of research work using R, 
 
 Therefore, you commit your R code in a remote repository in GitHub, and Binder takes it as input to create a virtual container to run your R code on the cloud.
 
-Software required: R Studio, GitHub (or GitLab) account, [myBinder](https://mybinder.org/)
+*Software required*: R Studio, GitHub (or GitLab) account, [myBinder](https://mybinder.org/)
+
+*Provided material*: R script (.R file) + incomplete R Markdown document (.rmd)
+
+*Background material*: [Chapter 4 git with RStudio and GitLab](https://vickysteeves.gitlab.io/repro-papers/git.html), and [Chapter 5 R Markdown in reproducible research](https://vickysteeves.gitlab.io/repro-papers/r-markdown-in-reproducible-research.html), from the  EGU 2018 course session on [Writing reproducible geoscience papers using R Markdown, Docker, and GitLab](https://vickysteeves.gitlab.io/repro-papers/index.html) by Daniel Nüst, Vicky Steeves, Rémi Rampin, Markus Konkol, Edzer Pebesma.
+
+Outputs: 
+* Complete .rmd file adding code chunk (map) + r expressions
+* Add the Binder configuration to execute remotely the R markdown file
+* Add a software and data availability statement to the R Markdown according to the [reproducible paper guidelines](https://osf.io/c8peu/)
+
 
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/cgranell/agile2019/master)
