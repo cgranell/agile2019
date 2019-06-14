@@ -10,10 +10,10 @@ Reproducibility can be tackled from the perspective of readers/reviewers or auth
 
 ### Example 1 - Supplementary code in R.
 
-The task is to read through the provided publication and reproduce the analysis based on the provided `analysis.R` R script in [this github repo](https://github.com/cgranell/agile20194particupants). Depending on your previous knowledge of R this might or might not require getting familiar with the specific computational environment chosen by the authors of the publication of interest. 
+The task is to read through the provided publication and reproduce the analysis based on the provided `analysis.R` script and input data in [this github repo](https://github.com/cgranell/agile2019participants). Depending on your previous knowledge of R this might or might not require getting familiar with the specific computational environment chosen by the authors of the publication of interest. 
 
 
-**Provided material**: publication as text document and (R Script + data) as an attached zip file 
+**Provided material**: A publication (paper) with an R analysis and daat as supplementary material [download]()  
 
 **Software required**: [R Studio](https://www.rstudio.com/products/rstudio/download/)
 
