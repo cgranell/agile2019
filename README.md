@@ -1,8 +1,7 @@
-# AGILE 2019 @ Reproducible Research (RR@AGILE) workshop
+# Reproducible Research (RR@AGILE) workshop - AGILE 2019
 Limassol, 17.6.2019
 
-This is the introductory session of the [Reproducible Research (RR@AGILE) workshop](https://o2r.info/reproducible-agile/2019/) at the AGILE 2019 conference. This year, the workshop is centred on the results of the [AGILE initiative on Reproducible Research](https://o2r.info/reproducible-agile/initiative/), whcih aimed to produce a draft version of the [Reproducible Publication Guidelines](https://osf.io/phmce/) for AGILE authors.
-
+This is the introductory session of the [Reproducible Research (RR@AGILE) workshop](https://o2r.info/reproducible-agile/2019/) at the [AGILE 2019](https://agile-online.org/) conference. This year, the workshop is centred on the results of the [AGILE initiative on Reproducible Research](https://o2r.info/reproducible-agile/initiative/), which aimed to discuss and draft the [Reproducible Publication Guidelines](https://osf.io/phmce/) or AGILE authors.
 
 Reproducibility can be tackled from the perspective of readers/reviewers or authors. The idea in this workshop is to take both perspectives and to get you started with the tools and platforms that increase the level of reproducibility of computational analyses.
 
