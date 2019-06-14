@@ -34,5 +34,13 @@ Look at the repo, examine the files it contains, and start an interactive sessio
 
 ## Part 2: Author perspective
 
+The author perspective focuses on the reproducibility of research work using R, GitHub and Binder. The guiding principle is to integrate the computational analysis with the text using R Markdown and providing future readers with the computational environment used during development by means of a Binder repository. 
+* _R/RStudio_ is your analysis code and development environment. 
+* _Github_ is a control version system to trace the changes of your analysis
+* _Binder_ generates a virtual execution environment so that others can recreate your analsys with identical execution conditions. 
+
+Therefore, you commit your R code in a remote repository in GitHub, and Binder takes it as input to create a virtual container to run your R code on the cloud.
+
+Software required: R Studio, GitHub (or GitLab) account, [myBinder](https://mybinder.org/)
 
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/cgranell/agile2019/master)
