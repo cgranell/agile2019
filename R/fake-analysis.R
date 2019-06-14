@@ -1,9 +1,7 @@
-
-# Fake paper based on the Chapter 16 of Spatial Data Science
+# Fake paper based on the first part of Chapter 16 of Spatial Data Science book
 # https://keen-swartz-3146c4.netlify.com/interpolation.html 
 
 # Link to hourly (time series) data on Air Quality, Cyprus, 2017. Source: EEA
-
 # https://fme.discomap.eea.europa.eu/fmedatastreaming/AirQualityDownload/AQData_Extract.fmw?CountryCode=CY&CityName=&Pollutant=8&Year_from=2017&Year_to=2017&Station=&Samplingpoint=&Source=E1a&Output=TEXT&UpdateDate=
 
 library(here)
@@ -43,7 +41,7 @@ a2 <- read.csv(here("data", "AirBase_v8_stations.csv"), sep = "\t", stringsAsFac
 
 # Spatial transformation  
 library(sf)
-#library(stars)
+library(stars)
 a2.sf <- st_as_sf(a2, coords = c("station_longitude_deg", "station_latitude_deg"), crs = 4326)
 
 sel <-colnames(aqsel) %in% a2$station_european_code
