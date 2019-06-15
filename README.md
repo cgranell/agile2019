@@ -7,13 +7,12 @@ Reproducibility can be tackled from the perspective of readers/reviewers or auth
 
 ## Part 1: Reader/reviewer perspective
 
-
 ### Example 1 - Supplementary code in R.
 
-The task is to read through the provided publication and reproduce the analysis based on the provided `analysis.R` script and input data in [this github repo](https://github.com/cgranell/agile2019participants). Depending on your previous knowledge of R this might or might not require getting familiar with the specific computational environment chosen by the authors of the publication of interest. 
+The task is to read through the provided publication and reproduce the analysis based on the provided R script and input data in [this folder](https://github.com/cgranell/agile2019/Readers_Example1). Depending on your previous knowledge of R this might or might not require getting familiar with the specific computational environment chosen by the authors of the publication of interest. 
 
 
-**Provided material**: A publication (paper) with an R analysis and daat as supplementary material [download]()  
+**Provided material**: A publication (paper) with an R analysis and input data as supplementary material [download](https://github.com/cgranell/agile2019/Readers_Example1)  
 
 **Software required**: [R Studio](https://www.rstudio.com/products/rstudio/download/)
 
@@ -26,7 +25,7 @@ Questions to discuss:
 
 
 ### Example 2 - Python Notebook using Binder
-Now, you are asked to work through this [Geopandas tutorial](https://github.com/jorisvandenbossche/geopandas-tutorial) tutorialand to assess the improvements regarding reproducibility in comparison to the first example. 
+Now, you are asked to work through this [Geopandas tutorial](https://github.com/jorisvandenbossche/geopandas-tutorial) tutorial and to assess the improvements regarding reproducibility in comparison to the first example. 
 Look at the repo, examine the files it contains, and start an interactive session on [Binder](https://mybinder.org/) for the first file of the tutorial `01-introduction-geospatial-data.ipynb`. If you feel comfortable with Python, feel fee to run other files of the tutorial.
 
 **Provided material**: [Geopandas tutorial](https://github.com/jorisvandenbossche/geopandas-tutorial)
