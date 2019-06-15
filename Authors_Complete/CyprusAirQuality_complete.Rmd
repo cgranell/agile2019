@@ -109,6 +109,6 @@ Figure 1: Air quality stations in Cyprus and the respective nitrogen dioxide (NO
 ## Data and Software Availability
 All research data supporting this publication are provided free for use by the EEA and are available in the following repository: https://github.com/cgranell/agile2019. The data were downloaded from EEA in June 2019.  
 
-The computational workflow in this publication is executed via a single R script file published in the mentioned repository: https://github.com/cgranell/agile2019. The script is based on material covered in Chapter 16 of the Spatial Data Science book by Pebesma and Bivand: https://keen-swartz-3146c4.netlify.com/interpolation.html. The used material and version has been archived in a Binder repository available at: 
+The computational workflow in this publication is executed via a single R script file published in the mentioned repository: https://github.com/cgranell/agile2019. The script is based on material covered in Chapter 16 of the Spatial Data Science book by Pebesma and Bivand: https://keen-swartz-3146c4.netlify.com/interpolation.html. The used material and version has been archived in a Binder repository available at: https://mybinder.org/v2/gh/cgranell/agile2019/tree/master/Authors_Complete/master
 
 
