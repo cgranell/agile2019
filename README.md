@@ -33,7 +33,7 @@ Look at the repo, examine the files it contains, and start an interactive sessio
 
 ## Part 2: Author perspective
 
-### Example 1 - Create an reproducible version of the paper as an R notebook.
+### Example 1 - A reproducible version of the example paper as an R notebook.
 
 The author perspective focuses on the reproducibility of research work using R, GitHub and Binder. The guiding principle is to integrate the computational analysis with the text using R Markdown and providing future readers with the computational environment used during development by means of a Binder repository. 
 * _R/RStudio_ is your analysis code and development environment. 
