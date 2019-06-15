@@ -80,13 +80,13 @@ Once the subset of data is available, the spatial perspective on the data can be
 
 ```{r spatial_transformation, echo=FALSE}
 # Spatial transformation  
-a2.sf <- st_as_sf(a2, coords = c("station_longitude_deg", "station_latitude_deg"), crs = 4326)
+a2.sf <- sf::st_as_sf(a2, coords = c("station_longitude_deg", "station_latitude_deg"), crs = 4326)
 
 sel <-colnames(aqsel) %in% a2$station_european_code
 aqsel <- aqsel[, sel]
 
 tb <- tibble(NO2 = apply(aqsel, 2, mean, na.rm = TRUE), station_european_code = colnames(aqsel))
-no2.sf <- right_join(a2.sf, tb) %>% st_transform(crs=4326)  
+no2.sf <- right_join(a2.sf, tb) %>% sf::st_transform(crs=4326)  
 ```
 
 The next step is the posting of data, i.e. plotting a map that shows how the air quality stations are distributed across the study area. The result of data posting for available air quality stations in Cyprus is displayed in Figure 1.

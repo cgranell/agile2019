@@ -85,7 +85,7 @@ sel <-colnames(aqsel) %in% a2$station_european_code
 aqsel <- aqsel[, sel]
 
 tb <- tibble(NO2 = apply(aqsel, 2, mean, na.rm = TRUE), station_european_code = colnames(aqsel))
-no2.sf <- right_join(a2.sf, tb) %>% st_transform(crs = 4326)  
+no2.sf <- right_join(a2.sf, tb) %>% sf::st_transform(crs = 4326)  
 ```
 
 The next step is the posting of data, i.e. plotting a map that shows how the air quality stations are distributed across the study area. The result of data posting for available air quality stations in Cyprus is displayed in Figure 1.
@@ -94,7 +94,7 @@ The next step is the posting of data, i.e. plotting a map that shows how the air
 # load Cyprus boundaries
 cshp <- cshp(as.Date("2000-01-1"))
 cy <- cshp[cshp$ISONAME == "Cyprus",]
-cy.sf <- st_transform(st_as_sf(cy), crs=4326)
+cy.sf <- sf::st_transform(st_as_sf(cy), crs=4326)
 
 # Map making
 ggplot() + 

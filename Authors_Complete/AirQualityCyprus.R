@@ -53,12 +53,12 @@ aqsel <- aqsel[, sel]
 
 tb <- tibble(NO2 = apply(aqsel, 2, mean, na.rm = TRUE), 
              station_european_code = colnames(aqsel))
-no2.sf <- right_join(a2.sf, tb) %>% st_transform(crs=4326)  
+no2.sf <- right_join(a2.sf, tb) %>% sf::st_transform(crs=4326)  
 
 # load Cyprus boundaries
 cshp <- cshp(as.Date("2000-01-1"))
 cy <- cshp[cshp$ISONAME == "Cyprus",]
-cy.sf <- st_transform(st_as_sf(cy), crs=4326)
+cy.sf <- sf::st_transform(st_as_sf(cy), crs=4326)
 
 # Map making
 ggplot() + 
