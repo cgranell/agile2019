@@ -12,7 +12,7 @@ library(xts)
 library(tidyverse)
 library(cshapes)
 
-data_aq <- here::here("Readers_Example1", "data", "aq")
+data_aq <- here::here("Authors_Example1", "data", "aq")
 
 # Read all files into a list
 files <- list.files(data_aq, pattern = "*.csv", full.names = TRUE)
@@ -38,7 +38,7 @@ sel <- apply(aq, 2, function(x) sum(is.na(x)) < 0.75 * 365 * 24)
 aqsel <- aq[, sel] # stations are in columns
 
 # Read name stations and filter for ones in Cyprus
-a2 <- read.csv(here::here("Readers_Example1","data", "AirBase_v8_stations.csv"), 
+a2 <- read.csv(here::here("Authors_Example1","data", "AirBase_v8_stations.csv"), 
                sep = "\t", stringsAsFactors = FALSE) %>% 
   as_tibble  %>% 
   filter(country_iso_code == "CY")
