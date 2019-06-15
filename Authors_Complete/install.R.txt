@@ -1,0 +1,5 @@
+install.packages("here")
+install.packages("tidyverse")
+install.packages("xts")
+install.packages("sf")
+install.packages("cshapes")
