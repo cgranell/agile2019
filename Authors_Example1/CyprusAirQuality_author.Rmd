@@ -21,18 +21,27 @@ Kriging is an interpolation method from the 1950s that has been widely applied. 
 
 The methodology builds on data provided by the European Environment Agency (EEA): air quality data and metadata about air quality stations in Europe. The analysis is done with R - following the kriging procedure presented in: https://keen-swartz-3146c4.netlify.com/interpolation.html 
 
-The first step is to load the required data and perform data preprocessing.
 
-```{r data input, echo= TRUE}
+```{r load_libraries, echo=FALSE, message=FALSE, warning=FALSE}
+if(!require(sf)) {
+  install.packages("sf", repos="https://cran.rstudio.com") }
+# library(sf)
+library(here)
+library(xts)
+library(tidyverse)
+library(cshapes)
+```
+
+After loadding required libraries, the  first step is to load the required data and perform data preprocessing.
+
+```{r data_input, echo=TRUE}
 # Fake paper based on the first part of Chapter 16 of Spatial Data Science book
 # https://keen-swartz-3146c4.netlify.com/interpolation.html 
 
 # Link to hourly (time series) data on Air Quality, Cyprus, 2017. Source: EEA
 # https://fme.discomap.eea.europa.eu/fmedatastreaming/AirQualityDownload/AQData_Extract.fmw?CountryCode=CY&CityName=&Pollutant=8&Year_from=2017&Year_to=2017&Station=&Samplingpoint=&Source=E1a&Output=TEXT&UpdateDate=
 
-library(here)
-
-data_aq <- here("data", "aq")
+data_aq <- here::here("Authors_Example1", "data", "aq")
 
 # Read all files into a list
 files <- list.files(data_aq, pattern = "*.csv", full.names = TRUE)
@@ -60,8 +69,7 @@ sel <- apply(aq, 2, function(x) sum(is.na(x)) < 0.75 * 365 * 24)
 aqsel <- aq[, sel] # stations are in columns
 
 # Read name stations and filter for ones in Cyprus
-library(tidyverse)
-a2 <- read.csv(here("data", "AirBase_v8_stations.csv"), sep = "\t", stringsAsFactors = FALSE) %>% 
+a2 <- read.csv(here::here("Authors_Example1", "data", "AirBase_v8_stations.csv"), sep = "\t", stringsAsFactors = FALSE) %>% 
   as_tibble  %>% 
   filter(country_iso_code == "CY")
 
@@ -70,18 +78,15 @@ a2 <- read.csv(here("data", "AirBase_v8_stations.csv"), sep = "\t", stringsAsFac
 
 Once the subset of data is available, the spatial perspective on the data can be exploited. 
 
-```{r spatial transformation, echo=FALSE}
+```{r spatial_transformation, echo=FALSE}
 # Spatial transformation  
-library(sf)
-library(stars)
 a2.sf <- st_as_sf(a2, coords = c("station_longitude_deg", "station_latitude_deg"), crs = 4326)
 
 sel <-colnames(aqsel) %in% a2$station_european_code
 aqsel <- aqsel[, sel]
 
 tb <- tibble(NO2 = apply(aqsel, 2, mean, na.rm = TRUE), station_european_code = colnames(aqsel))
-crs <- 3857 # Mercator
-no2.sf <- right_join(a2.sf, tb) %>% st_transform(crs)  
+no2.sf <- right_join(a2.sf, tb) %>% st_transform(crs=4326)  
 ```
 
 The next step is the posting of data, i.e. plotting a map that shows how the air quality stations are distributed across the study area. The result of data posting for available air quality stations in Cyprus is displayed in Figure 1.

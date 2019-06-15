@@ -42,7 +42,7 @@ Therefore, you commit your R code in a remote repository in GitHub, and Binder t
 
 *Software required*: R Studio, GitHub (or GitLab) account, [myBinder](https://mybinder.org/)
 
-*Provided material*: R script (.R file) + incomplete R Markdown document (.rmd)
+*Provided material*: R script (.R file) + incomplete R Markdown document (.Rmd) in this [folder](https://github.com/cgranell/agile2019/tree/master/Authors_Example1). 
 
 *Background material*: [Chapter 4 git with RStudio and GitLab](https://vickysteeves.gitlab.io/repro-papers/git.html), and [Chapter 5 R Markdown in reproducible research](https://vickysteeves.gitlab.io/repro-papers/r-markdown-in-reproducible-research.html), from the  EGU 2018 course session on [Writing reproducible geoscience papers using R Markdown, Docker, and GitLab](https://vickysteeves.gitlab.io/repro-papers/index.html) by Daniel Nüst, Vicky Steeves, Rémi Rampin, Markus Konkol, Edzer Pebesma.
 
