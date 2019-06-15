@@ -1,0 +1,98 @@
+---
+title: "Air Quality in Cyprus - An Evaluation based on Kriging"
+author: "John Dow, Jane Wod"
+date: "13 Juni 2019"
+output:
+  html_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## Introduction
+
+This paper provides an assessment of air quality in Cyprus based on Kriging interpolation. Air quality is a relevant indicator in the context of quality of life that gained importance over the past decades. Mapping air quality supports the analysis of areas that are more or less strongly affected by air pollution and therefore provides a basis for decision making about potential counter measures. 
+
+## Background and Related Work
+Kriging is an interpolation method from the 1950s that has been widely applied. It constitutes an important approach for the interpolation of samples that represent continuous phenomena. 
+
+## Methodology
+
+The methodology builds on data provided by the European Environment Agency (EEA): air quality data and metadata about air quality stations in Europe. The analysis is done with R - following the kriging procedure presented in: https://keen-swartz-3146c4.netlify.com/interpolation.html 
+
+The first step is to load the required data and perform data preprocessing.
+
+```{r data input, echo= TRUE}
+# Fake paper based on the first part of Chapter 16 of Spatial Data Science book
+# https://keen-swartz-3146c4.netlify.com/interpolation.html 
+
+# Link to hourly (time series) data on Air Quality, Cyprus, 2017. Source: EEA
+# https://fme.discomap.eea.europa.eu/fmedatastreaming/AirQualityDownload/AQData_Extract.fmw?CountryCode=CY&CityName=&Pollutant=8&Year_from=2017&Year_to=2017&Station=&Samplingpoint=&Source=E1a&Output=TEXT&UpdateDate=
+
+library(here)
+
+data_aq <- here("data", "aq")
+
+# Read all files into a list
+files <- list.files(data_aq, pattern = "*.csv", full.names = TRUE)
+r <- lapply(files, function(f) read.csv(f, encoding = "UTF-8"))
+
+Sys.setenv(TZ = "UTC") # make sure times are not interpreted as DST
+r <- lapply(r, function(f) {
+  f$t <- as.POSIXct(f$DatetimeBegin) 
+  f[order(f$t), ] 
+}) 
+
+# get rid of smaller datasets that do not contain hourly data
+r <- r[sapply(r, nrow) > 1000]
+names(r) <-  sapply(r, function(f) unique(f$AirQualityStationEoICode))
+length(r) == length(unique(names(r)))
+
+# Combine files based on time
+library(xts)
+r <- lapply(r, function(f) xts(f$Concentration, f$t))
+aq <- do.call(cbind, r)
+
+
+# remove stations with more than 75% missing values:
+sel <- apply(aq, 2, function(x) sum(is.na(x)) < 0.75 * 365 * 24)
+aqsel <- aq[, sel] # stations are in columns
+
+# Read name stations and filter for ones in Cyprus
+library(tidyverse)
+a2 <- read.csv(here("data", "AirBase_v8_stations.csv"), sep = "\t", stringsAsFactors = FALSE) %>% 
+  as_tibble  %>% 
+  filter(country_iso_code == "CY")
+
+
+```
+
+Once the subset of data is available, the spatial perspective on the data can be exploited. 
+
+```{r spatial transformation, echo=FALSE}
+# Spatial transformation  
+library(sf)
+library(stars)
+a2.sf <- st_as_sf(a2, coords = c("station_longitude_deg", "station_latitude_deg"), crs = 4326)
+
+sel <-colnames(aqsel) %in% a2$station_european_code
+aqsel <- aqsel[, sel]
+
+tb <- tibble(NO2 = apply(aqsel, 2, mean, na.rm = TRUE), station_european_code = colnames(aqsel))
+crs <- 3857 # Mercator
+no2.sf <- right_join(a2.sf, tb) %>% st_transform(crs)  
+```
+
+The next step is the posting of data, i.e. plotting a map that shows how the air quality stations are distributed across the study area. The result of data posting for available air quality stations in Cyprus is displayed in Figure 1.
+
+
+
+
+
+
+Figure 1: Air quality stations in Cyprus and the respective nitrogen dioxide (NO2) values.
+
+## Data and Software Availability
+The new guidelines for reproducible research papers foresee a data and software availability statement as part of the Methods section. Please take a look at the  guidelines and complete the statement according to the given exmaple statement: https://osf.io/agjp9/
+
