@@ -33,6 +33,8 @@ Look at the repo, examine the files it contains, and start an interactive sessio
 
 ## Part 2: Author perspective
 
+### Example 1 - Create an reproducible version of the paper as an R notebook.
+
 The author perspective focuses on the reproducibility of research work using R, GitHub and Binder. The guiding principle is to integrate the computational analysis with the text using R Markdown and providing future readers with the computational environment used during development by means of a Binder repository. 
 * _R/RStudio_ is your analysis code and development environment. 
 * _Github_ is a control version system to trace the changes of your analysis
@@ -47,9 +49,12 @@ Therefore, you commit your R code in a remote repository in GitHub, and Binder t
 *Background material*: [Chapter 4 git with RStudio and GitLab](https://vickysteeves.gitlab.io/repro-papers/git.html), and [Chapter 5 R Markdown in reproducible research](https://vickysteeves.gitlab.io/repro-papers/r-markdown-in-reproducible-research.html), from the  EGU 2018 course session on [Writing reproducible geoscience papers using R Markdown, Docker, and GitLab](https://vickysteeves.gitlab.io/repro-papers/index.html) by Daniel Nüst, Vicky Steeves, Rémi Rampin, Markus Konkol, Edzer Pebesma.
 
 Outputs: 
-* Complete .rmd file adding code chunk (map) + r expressions
-* Add the Binder configuration to execute remotely the R markdown file
+* Complete .Rmd file adding code chunks (map creation) + r expressions
 * Add a software and data availability statement to the R Markdown according to the [reproducible paper guidelines](https://osf.io/c8peu/)
 
+### Example Complete - Run R notebook on Binder.
+
+Outputs: 
+* Add the Binder configuration to execute remotely the R markdown file
 
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/cgranell/agile2019/master)
